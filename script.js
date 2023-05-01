@@ -34,17 +34,17 @@ fetch(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=160`) // api address
     setTimeout(() => {
     
         for(let el of pokeBox) {
-            document.querySelector('.container').insertAdjacentHTML('beforeend', `<img src="${el.sprites.front_default}"></img>`)
+            document.querySelector('.container').insertAdjacentHTML('beforeend', `<img src="${el.sprites.front_default}"></img>`) // adds the obtained sprites
         }
 
         let images = document.querySelectorAll('img');
 
         for(let i = 0; i < 160; i++) {
-            images[i].addEventListener('click', () => {
+            images[i].addEventListener('click', () => { // adding click listeners to all the images
                 alert(`It's ${pokeBox[i].name}!`);
             })
         }
         
-      }, "700");
+      }, "1500"); // I added a time delay to give the api call time to complete
 
 })
