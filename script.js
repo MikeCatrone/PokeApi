@@ -20,7 +20,6 @@ fetch(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=160`) // api address
             .then((pokeData) => {
                 
                 pokeData.json().then((x) => { // grabs the json portion for the pokedata
-                    console.log(x);
                     pokeBox.push(x); // pushes data to pokeBox array as an object
                 })
             })
