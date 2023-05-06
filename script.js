@@ -1,4 +1,3 @@
-
 /////////////////////////////////////
 //
 //          Pokemon API 
@@ -6,44 +5,72 @@
 /////////////////////////////////////
 
 
-let pokeBox = [];
+
+let pokeBox = []; // box containing all final data
 
 
-fetch(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=160`) // api address
-.then((data) => {
+/////////////////////////////////////////////////////////////////////////////
 
-    data.json().then((processedData) => {
+// this function sends 2 get requests in order to obtain the final Pokemon data
 
-        for(let el of processedData.results) { // loops through obtained array of data for a url containing Pokemon data
-            
-            fetch(el.url) // using obtained url to fetch pokedata
-            .then((pokeData) => {
-                
-                pokeData.json().then((x) => { // grabs the json portion for the pokedata
-                    pokeBox.push(x); // pushes data to pokeBox array as an object
-                })
-            })
-        }
+let pokeData = async () => {
 
-    });
-
-})
-.then(() => {
-
-    setTimeout(() => {   // I added a time delay to give the api call time to complete
-    
-        for(let el of pokeBox) {
-            document.querySelector('.container').insertAdjacentHTML('beforeend', `<img src="${el.sprites.front_default}"></img>`) // adds the obtained sprites
-        }
-
-        let images = document.querySelectorAll('img');
-
-        for(let i = 0; i < 160; i++) {
-            images[i].addEventListener('click', () => { // adding click listeners to all the images
-                console.log(`It's ${pokeBox[i].name}!`);
-            })
-        }
+    axios.get(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=160`) 
+    .then((x) => {
         
-      }, "1500"); 
+        for(let el of x.data.results) { 
+            
+            axios.get(el.url) // nested urls containing the final data needed
+            .then((finalData) => {
+               
+                pokeBox[finalData.data.id] = finalData.data; // reorders pokeBox array based on pokemon's id
 
-})
+            })  
+        }
+    })
+    
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+// this function creates the sprites, browser placement, and event listeners for each Pokemon
+
+let boxCheck = async () => { 
+
+    setTimeout(() => {
+
+        pokeBox.shift(); // removing first blank element since no pokemon has an id of '0'
+        for(let el of pokeBox) {
+
+            let sprite = `<img src="${el.sprites.front_default}"></img>`; // creating sprites and pushing them to the DOM
+            document.body.insertAdjacentHTML('beforeend', sprite);
+        }
+
+        let images = document.querySelectorAll('img'); // click listener for each sprite
+        for(let i = 0; i < 160; i++) {
+            images[i].addEventListener('click', () => {
+                console.log(pokeBox[i].name);
+            })
+        }
+
+      }, "500");
+
+} 
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let process = async () => {
+    
+    try {
+        await pokeData();
+        await boxCheck();
+
+    } catch(err) {
+        console.log(`There's been an error: ${err}`);
+    }
+}
+
+
+process();
+
