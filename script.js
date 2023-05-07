@@ -53,10 +53,24 @@ let boxCheck = async () => {
             })
         }
 
-      }, "1200");
+      }, "1100");
 
 } 
 
+let reloadPage = async () => {
+    
+    setTimeout(() => {
+
+        let pokeAmount = document.querySelectorAll('img');
+        console.log(pokeAmount.length);
+        if(pokeAmount.length < 160) {
+            location.reload();
+        } else {
+            null;
+        }
+
+      }, "1500");
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -65,6 +79,7 @@ let process = async () => {
     try {
         await pokeData();
         await boxCheck();
+        await reloadPage();
 
     } catch(err) {
         console.log(`There's been an error: ${err}`);
@@ -73,4 +88,3 @@ let process = async () => {
 
 
 process();
-
