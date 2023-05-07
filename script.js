@@ -62,8 +62,8 @@ let reloadPage = async () => {
     setTimeout(() => {
 
         let pokeAmount = document.querySelectorAll('img');
-        console.log(pokeAmount.length);
-        if(pokeAmount.length < 160) {
+        
+        if(pokeAmount.length < 160) {  // if less than 160 pokemon load, refresh the page
             location.reload();
         } else {
             null;
