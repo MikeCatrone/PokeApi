@@ -57,13 +57,16 @@ let boxCheck = async () => {
 
 } 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// this function reloads the page if some pokemon do not load from the api
 let reloadPage = async () => {
     
     setTimeout(() => {
 
         let pokeAmount = document.querySelectorAll('img');
         
-        if(pokeAmount.length < 160) {  // if less than 160 pokemon load, refresh the page
+        if(pokeAmount.length < 160) {  // checks if the first 160 pokemon have loaded
             location.reload();
         } else {
             null;
