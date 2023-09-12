@@ -49,7 +49,7 @@ let boxCheck = async () => {
         let images = document.querySelectorAll('img'); // click listener for each sprite
         for(let i = 0; i < 160; i++) {
             images[i].addEventListener('click', () => {
-                console.log(pokeBox[i].name);
+                alert(`Heyy, it's ${pokeBox[i].name}!`);
             })
         }
 
