@@ -33,7 +33,7 @@ let pokeData = async () => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-// this function creates the sprites, browser placement, and event listeners for each Pokemon
+// this function creates the sprites, browser placement, and event listeners for each Pokemon 1 - 160
 
 let boxCheck = async () => { 
 
