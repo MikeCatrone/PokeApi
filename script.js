@@ -11,7 +11,7 @@ let pokeBox = [];   // box containing all final data that will be rendered
 
 /////////////////////////////////////////////////////////////////////////////
 
-// this function sends 2 get requests in order to obtain the final Pokemon data
+// this function sends 2 get requests in order to obtain all Pokemon data needed
 
 let pokeData = async () => {
 
@@ -33,7 +33,7 @@ let pokeData = async () => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-// this function creates the sprites, browser placement, and event listeners for each Pokemon 1 - 160
+// this function creates the sprites, browser placement, and event listeners for each Pokemon #1 - 160
 
 let boxCheck = async () => { 
 
