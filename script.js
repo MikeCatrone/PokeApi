@@ -6,7 +6,7 @@
 
 
 
-let pokeBox = []; // box containing all final data
+let pokeBox = [];   // box containing all final data that will be rendered
 
 
 /////////////////////////////////////////////////////////////////////////////
