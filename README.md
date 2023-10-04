@@ -1,4 +1,3 @@
 # PokeApi
-I started this project so I can practice requesting data from APIs using vanilla Javascript and Axios to handle fetch requests.
-In this case, I wanted to see if I could render some Pokemon sprites and give them all button handlers.
-In time I would like to build a nice Pokedex : )
+<p>This is a small project I started to help me practice with API calls in vanilla Javascript and using Axios for data fetching. Growing up I was a huge Pokemon fan, so it only made sense to try and build a small app to render some Pokemon sprite graphics</p>
+<p>Pokedex soon to follow 😄</p>
